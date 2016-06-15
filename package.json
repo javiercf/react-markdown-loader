@@ -1,0 +1,25 @@
+{
+  "name": "react-styleguide-loader",
+  "version": "0.1.0",
+  "description": "Webpack loader to render React components",
+  "main": "index.js",
+  "scripts": {
+    "test": "./tests/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javiercf/react-styleguide-loader.git"
+  },
+  "keywords": [
+    "react",
+    "styleguide",
+    "webpack",
+    "loader"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/javiercf/react-styleguide-loader/issues"
+  },
+  "homepage": "https://github.com/javiercf/react-styleguide-loader#readme"
+}
