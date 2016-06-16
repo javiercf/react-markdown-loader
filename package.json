@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/javiercf/react-styleguide-loader/issues"
   },
-  "homepage": "https://github.com/javiercf/react-styleguide-loader#readme"
+  "homepage": "https://github.com/javiercf/react-styleguide-loader#readme",
+  "devDependencies": {
+    "markdown-parse": "^0.2.1"
+  }
 }
