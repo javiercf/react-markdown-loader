@@ -16,8 +16,11 @@
     "webpack",
     "loader"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Javier Cubides <javiercferrans@gmail.com>",
+  "contributors": [
+    "Fernando Pasik <fernando@pasik.com.ar> (http://fernandopasik.com/)"
+  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/javiercf/react-styleguide-loader/issues"
   },
