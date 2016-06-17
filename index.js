@@ -1,28 +1,30 @@
-"use strict";
+'use strict';
 
 const parser = require('markdown-parse');
 
 /**
- *
+ * Main function
+ * @param {String} content
+ * @returns {String}
  */
- module.exports = function(content) {
+module.exports = function (content) {
   let source = '';
-  parser(content, function(err, result) {
+  parser(content, (err, result) => {
     const props = result.attributes.props,
-    name = result.attributes.componentName,
-    paths = result.attributes.dependencies,
-    children = result.attributes.children;
+      name = result.attributes.componentName,
+      paths = result.attributes.dependencies,
+      children = result.attributes.children,
+      componentProps = renderProps(props);
 
-    let imports = '', componentProps = '';
+    let imports = '';
     if (paths) {
-      for (const name in paths) {
-        imports += `import ${name} from "${paths[name]}"`;
+      for (name in paths) {
+        if ({}.hasOwnProperty.call(paths, name)) {
+          imports += `import ${name} from "${paths[name]}"`;
+        }
       }
     }
 
-    if (props) {
-      componentProps = renderProps(props);
-    }
     source = `
     ${imports}
 
@@ -43,37 +45,48 @@ const parser = require('markdown-parse');
     };
     `;
 
-    console.log(renderComponent(name, componentProps, children));
-
   });
 
   this.cacheable();
 
   return source;
 
-}
+};
 
+/**
+ * @param {Object} props Component props
+ * @returns {String}
+ */
 function renderProps(props) {
   let componentProps = '';
-  for (const prop in props) {
-    componentProps += `${prop}="${props[prop]}" `;
+  if (props) {
+    for (prop in props) {
+      if ({}.hasOwnProperty.call(props, prop)) {
+        componentProps += `${prop}="${props[prop]}" `;
+      }
+    }
   }
   return componentProps;
 }
 
+/**
+ * @param {String} name Component Name
+ * @param {String} props Component props String
+ * @param {Array} children Component children array
+ * @returns {String}
+ */
 function renderComponent(name, props, children) {
+  let component = '';
   if (!children) {
-    return `<${name} ${props} />`;
+    component = `<${name} ${props} />`;
   } else {
     const rendered = children.map(child => {
       const childProps = renderProps(child.props);
       return child.content ? child.content : renderComponent(
-          child.name, childProps, child.children)
+        child.name, childProps, child.children);
     });
-    return `
-    <${name} ${props}>
-      ${rendered}
-    </${name}>
-    `
+    component = `<${name} ${props}>${rendered}</${name}>`;
   }
+
+  return component;
 }

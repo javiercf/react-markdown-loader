@@ -1,6 +1,6 @@
 {
   "name": "react-markdown-loader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Webpack loader to render React Components from markdown",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/javiercf/react-markdown-loader#readme",
   "devDependencies": {
+    "eslint": "^2.13.0",
     "markdown-parse": "^0.2.1"
   }
 }
