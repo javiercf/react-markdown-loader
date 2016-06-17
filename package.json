@@ -1,20 +1,21 @@
 {
-  "name": "react-styleguide-loader",
+  "name": "react-markdown-loader",
   "version": "0.1.0",
-  "description": "Webpack loader to render React components",
+  "description": "Webpack loader to render React Components from markdown",
   "main": "index.js",
   "scripts": {
     "test": "./tests/*.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/javiercf/react-styleguide-loader.git"
+    "url": "git+https://github.com/javiercf/react-markdown-loader.git"
   },
   "keywords": [
     "react",
     "styleguide",
     "webpack",
-    "loader"
+    "loader",
+    "markdown"
   ],
   "author": "Javier Cubides <javiercferrans@gmail.com>",
   "contributors": [
@@ -22,9 +23,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/javiercf/react-styleguide-loader/issues"
+    "url": "https://github.com/javiercf/react-markdown-loader/issues"
   },
-  "homepage": "https://github.com/javiercf/react-styleguide-loader#readme",
+  "homepage": "https://github.com/javiercf/react-markdown-loader#readme",
   "devDependencies": {
     "markdown-parse": "^0.2.1"
   }
