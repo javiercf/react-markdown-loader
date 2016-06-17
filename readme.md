@@ -1,4 +1,4 @@
-Styleguide Loader
+React Markdown
 ==================
 
 This loader parses markdown files and converts them to a React Stateless Component
