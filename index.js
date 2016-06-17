@@ -18,7 +18,7 @@ module.exports = function (content) {
 
     let imports = '';
     if (paths) {
-      for (name in paths) {
+      for (const name in paths) {
         if ({}.hasOwnProperty.call(paths, name)) {
           imports += `import ${name} from "${paths[name]}"`;
         }
@@ -60,7 +60,7 @@ module.exports = function (content) {
 function renderProps(props) {
   let componentProps = '';
   if (props) {
-    for (prop in props) {
+    for (const prop in props) {
       if ({}.hasOwnProperty.call(props, prop)) {
         componentProps += `${prop}="${props[prop]}" `;
       }
