@@ -16,11 +16,11 @@ module.exports = function (content) {
       children = result.attributes.children,
       componentProps = renderProps(props);
 
-    let imports = '';
+    let imports = 'import React from "react";';
     if (paths) {
       for (const name in paths) {
         if ({}.hasOwnProperty.call(paths, name)) {
-          imports += `import ${name} from "${paths[name]}"`;
+          imports += `import ${name} from "${paths[name]}";`;
         }
       }
     }
@@ -30,11 +30,6 @@ module.exports = function (content) {
 
     module.exports = function(context) {
       return (function() {
-        if (!React) {
-          var React = require("react");
-        }
-
-
         return (
         <div>
         ${result.html}
