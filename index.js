@@ -11,18 +11,15 @@ module.exports = function (content) {
   let source = '';
   parser(content, (err, result) => {
     const re = /<code[^>]*>([\S\s].+?)[\S\s]<\/code>/g;
-    let m;
+    let example;
 
-    while ((m = re.exec(result.html)) !== null) {
-      let tag = '';
-      if (m.index === re.lastIndex) {
-        re.lastIndex++;
-      }
-      tag = m[1].replace(/&lt;/g, '<');
-      tag = tag.replace(/&quot;/g, '"');
-      tag = tag.replace(/&gt;/g, '>');
-      result.html = insert(result.html, m[0].length + m.index, tag);
-    }
+    result.html = result.html.replace(re, (codeElement, code) => {
+      example = code
+        .replace(/&lt;/g, '<')
+        .replace(/&quot;/g, '"')
+        .replace(/&gt;/g, '>');
+      return `<div class="example"><div class="example-run">${example}</div>${codeElement}</div>`;
+    });
 
     const props = result.attributes.props,
       name = result.attributes.componentName,
@@ -97,8 +94,4 @@ function renderComponent(name, props, children) {
   }
 
   return component;
-}
-
-function insert(str, index, value) {
-  return str.substr(0, index) + value + str.substr(index);
 }
