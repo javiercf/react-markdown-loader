@@ -10,24 +10,23 @@ const parser = require('markdown-parse');
 module.exports = function (content) {
   let source = '';
   parser(content, (err, result) => {
-    const re = /<code[^>]*>([\S\s].+?)[\S\s]<\/code>/g;
-    let example;
+    const re = /<code[^>]*>([\S\s].+?)[\S\s]<\/code>/g,
+      paths = result.attributes.dependencies;
+    let example,
+      imports = 'import React from "react";';
 
     result.html = result.html.replace(re, (codeElement, code) => {
       example = code
         .replace(/&lt;/g, '<')
         .replace(/&quot;/g, '"')
         .replace(/&gt;/g, '>');
-      return `<div class="example"><div class="example-run">${example}</div>${codeElement}</div>`;
+      return `
+      <div class="example">
+        <div class="example-run">${example}</div>
+        ${codeElement}
+      </div>`;
     });
 
-    const props = result.attributes.props,
-      name = result.attributes.componentName,
-      paths = result.attributes.dependencies,
-      children = result.attributes.children,
-      componentProps = renderProps(props);
-
-    let imports = 'import React from "react";';
     if (paths) {
       for (const name in paths) {
         if ({}.hasOwnProperty.call(paths, name)) {
@@ -57,41 +56,3 @@ module.exports = function (content) {
   return source;
 
 };
-
-/**
- * @param {Object} props Component props
- * @returns {String}
- */
-function renderProps(props) {
-  let componentProps = '';
-  if (props) {
-    for (const prop in props) {
-      if ({}.hasOwnProperty.call(props, prop)) {
-        componentProps += `${prop}="${props[prop]}" `;
-      }
-    }
-  }
-  return componentProps;
-}
-
-/**
- * @param {String} name Component Name
- * @param {String} props Component props String
- * @param {Array} children Component children array
- * @returns {String}
- */
-function renderComponent(name, props, children) {
-  let component = '';
-  if (!children) {
-    component = `<${name} ${props} />`;
-  } else {
-    const rendered = children.map(child => {
-      const childProps = renderProps(child.props);
-      return child.content ? child.content : renderComponent(
-        child.name, childProps, child.children);
-    });
-    component = `<${name} ${props}>${rendered}</${name}>`;
-  }
-
-  return component;
-}
