@@ -21,9 +21,9 @@ module.exports = function (content) {
         .replace(/&quot;/g, '"')
         .replace(/&gt;/g, '>');
       return `
-      <div class="example">
-        <div class="example-run">${example}</div>
-        ${codeElement}
+      <div className="example">
+        <div className="run">${example}</div>
+        <div className="source">${codeElement}</div>
       </div>`;
     });
 
