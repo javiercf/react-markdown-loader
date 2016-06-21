@@ -10,6 +10,20 @@ const parser = require('markdown-parse');
 module.exports = function (content) {
   let source = '';
   parser(content, (err, result) => {
+    const re = /<code[^>]*>([\S\s].+?)[\S\s]<\/code>/g;
+    let m;
+
+    while ((m = re.exec(result.html)) !== null) {
+      let tag = '';
+      if (m.index === re.lastIndex) {
+        re.lastIndex++;
+      }
+      tag = m[1].replace(/&lt;/g, '<');
+      tag = tag.replace(/&quot;/g, '"');
+      tag = tag.replace(/&gt;/g, '>');
+      result.html = insert(result.html, m[0].length + m.index, tag);
+    }
+
     const props = result.attributes.props,
       name = result.attributes.componentName,
       paths = result.attributes.dependencies,
@@ -33,7 +47,6 @@ module.exports = function (content) {
         return (
         <div>
         ${result.html}
-        ${name ? renderComponent(name, componentProps, children) : ''}
         </div>
         );
       }).apply(context);
@@ -84,4 +97,8 @@ function renderComponent(name, props, children) {
   }
 
   return component;
+}
+
+function insert(str, index, value) {
+  return str.substr(0, index) + value + str.substr(index);
 }
