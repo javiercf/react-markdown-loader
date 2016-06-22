@@ -10,7 +10,7 @@ const parser = require('markdown-parse');
 module.exports = function (content) {
   let source = '';
   parser(content, (err, result) => {
-    const re = /<code[^>]*>([\S\s].+?)[\S\s]<\/code>/g,
+    const re = /<pre><code[^>]*>([\S\s]+?)[\S\s]<\/code><\/pre>/g,
       paths = result.attributes.dependencies;
     let example,
       imports = 'import React from "react";';
@@ -21,9 +21,9 @@ module.exports = function (content) {
         .replace(/&quot;/g, '"')
         .replace(/&gt;/g, '>');
       return `
-      <div class="example">
-        <div class="example-run">${example}</div>
-        ${codeElement}
+      <div className="example">
+        <div className="run">${example}</div>
+        <div className="source">${codeElement}</div>
       </div>`;
     });
 
