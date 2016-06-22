@@ -46,10 +46,6 @@ module.exports = function (content) {
         return (
         <div>
         ${result.html}
-        <pre>
-        hello {\n}
-        mother \n
-        </pre>
         </div>
         );
       }).apply(context);
