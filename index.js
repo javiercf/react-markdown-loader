@@ -13,6 +13,7 @@ module.exports = function (content) {
     const re = /<pre><code[^>]*>([\S\s]+?)[\S\s]<\/code><\/pre>/g,
       paths = result.attributes.dependencies;
     let example,
+      exampleSource,
       imports = 'import React from "react";';
 
     result.html = result.html.replace(re, (codeElement, code) => {
@@ -20,10 +21,12 @@ module.exports = function (content) {
         .replace(/&lt;/g, '<')
         .replace(/&quot;/g, '"')
         .replace(/&gt;/g, '>');
+      exampleSource = codeElement.replace(/(\n)/g, '{"\\n"}');
+
       return `
       <div className="example">
         <div className="run">${example}</div>
-        <div className="source">${codeElement}</div>
+        <div className="source">${exampleSource}</div>
       </div>`;
     });
 
@@ -43,6 +46,10 @@ module.exports = function (content) {
         return (
         <div>
         ${result.html}
+        <pre>
+        hello {\n}
+        mother \n
+        </pre>
         </div>
         );
       }).apply(context);
