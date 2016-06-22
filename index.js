@@ -10,7 +10,7 @@ const parser = require('markdown-parse');
 module.exports = function (content) {
   let source = '';
   parser(content, (err, result) => {
-    const re = /<pre><code[^>]*>([\S\s].+?)[\S\s]<\/code><\/pre>/g,
+    const re = /<pre><code[^>]*>([\S\s]+?)[\S\s]<\/code><\/pre>/g,
       paths = result.attributes.dependencies;
     let example,
       imports = 'import React from "react";';
