@@ -20,7 +20,9 @@ module.exports = function (content) {
       example = code
         .replace(/&lt;/g, '<')
         .replace(/&quot;/g, '"')
-        .replace(/&gt;/g, '>');
+        .replace(/&gt;/g, '>')
+        .replace(/(\n)/g, '{"\\n"}');
+
       exampleSource = codeElement.replace(/(\n)/g, '{"\\n"}');
 
       return `
