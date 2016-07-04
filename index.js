@@ -23,7 +23,12 @@ module.exports = function (content) {
         .replace(/&gt;/g, '>')
         .replace(/(\n)/g, '{"\\n"}');
 
-      exampleSource = codeElement.replace(/(\n)/g, '{"\\n"}');
+      exampleSource = codeElement
+        .replace(/{/g, '{"{"{')
+        .replace(/}/g, '{"}"}')
+        .replace(/{"{"{/g, '{"{"}')
+        .replace(/class=/g, 'className=')
+        .replace(/(\n)/g, '{"\\n"}');
 
       return `
       <div className="example">
