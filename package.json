@@ -23,13 +23,17 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint .",
-    "travis": "npm run -s lint"
+    "test": "mocha",
+    "travis": "npm run -s lint && npm test"
   },
   "dependencies": {
     "markdown-parse": "^0.2.1"
   },
   "devDependencies": {
-    "eslint-config-fernandopasik": "^0.4.3"
+    "chai": "^3.5.0",
+    "dirty-chai": "^1.2.2",
+    "eslint-config-fernandopasik": "^0.4.3",
+    "mocha": "^3.0.1"
   },
   "engines": {
     "node": ">=4.0.0",
