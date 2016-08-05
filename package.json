@@ -2,7 +2,7 @@
   "name": "react-markdown-loader",
   "version": "1.0.9-alpha",
   "description": "Webpack loader to render React Components from markdown",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "./tests/*.js",
     "lint": "eslint ./index.js"
