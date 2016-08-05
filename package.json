@@ -22,9 +22,29 @@
   },
   "main": "src/index.js",
   "scripts": {
+    "build": "npm run -s lint && npm test",
+    "start": "npm run watch",
     "lint": "eslint .",
-    "test": "mocha",
-    "travis": "npm run -s lint && npm test"
+    "test": "nyc mocha",
+    "pretest": "rm -rf coverage",
+    "travis": "npm run -s build",
+    "watch": "watch 'npm run -s build' src/ test/"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "all": true,
+    "exclude": [
+      "test/",
+      "coverage/"
+    ],
+    "check-coverage": false,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100,
+    "statements": 100
   },
   "dependencies": {
     "markdown-parse": "^0.2.1"
@@ -34,7 +54,9 @@
     "dirty-chai": "^1.2.2",
     "eslint": "^3.2.2",
     "eslint-config-fernandopasik": "^0.4.3",
-    "mocha": "^3.0.1"
+    "mocha": "^3.0.1",
+    "nyc": "^7.1.0",
+    "watch": "^0.19.1"
   },
   "engines": {
     "node": ">=4.0.0",
