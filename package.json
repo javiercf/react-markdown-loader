@@ -2,15 +2,6 @@
   "name": "react-markdown-loader",
   "version": "1.0.9-alpha",
   "description": "Webpack loader to render React Components from markdown",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "./tests/*.js",
-    "lint": "eslint ./index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/javiercf/react-markdown-loader.git"
-  },
   "keywords": [
     "react",
     "styleguide",
@@ -18,19 +9,29 @@
     "loader",
     "markdown"
   ],
+  "homepage": "https://github.com/javiercf/react-markdown-loader",
+  "bugs": "https://github.com/javiercf/react-markdown-loader/issues",
+  "license": "MIT",
   "author": "Javier Cubides <javiercferrans@gmail.com>",
   "contributors": [
     "Fernando Pasik <fernando@pasik.com.ar> (http://fernandopasik.com/)"
   ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/javiercf/react-markdown-loader/issues"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/javiercf/react-markdown-loader.git"
   },
-  "homepage": "https://github.com/javiercf/react-markdown-loader#readme",
-  "devDependencies": {
-    "eslint": "^2.13.0"
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint ."
   },
   "dependencies": {
     "markdown-parse": "^0.2.1"
+  },
+  "devDependencies": {
+    "eslint-config-fernandopasik": "^0.4.3"
+  },
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": ">=2.14.2"
   }
 }

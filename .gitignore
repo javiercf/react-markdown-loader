@@ -1,1 +1,27 @@
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# npm and bower installs
 node_modules
+bower_components
+npm-debug.log
+
+# sass cache folder
+.sass-cache
+
+# build and temp folders
+dist
+.tmp
+
+# project files
+coverage
+.nyc_output

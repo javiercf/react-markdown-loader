@@ -4,12 +4,15 @@ const parser = require('markdown-parse');
 
 /**
  * Main function
- * @param {String} content
- * @returns {String}
+ * @param   {String}  content   Markdown file content
+ * @returns {String}            React component
  */
 module.exports = function (content) {
   let source = '';
   parser(content, (err, result) => {
+    if (err) {
+      throw new Error(err);
+    }
     const re = /<pre><code[^>]*>([\S\s]+?)[\S\s]<\/code><\/pre>/g,
       paths = result.attributes.dependencies;
     let example,
@@ -39,7 +42,8 @@ module.exports = function (content) {
 
     if (paths) {
       for (const name in paths) {
-        if ({}.hasOwnProperty.call(paths, name)) {
+        // eslint-disable-next-line no-prototype-builtins
+        if (paths.hasOwnProperty(name)) {
           imports += `import ${name} from "${paths[name]}";`;
         }
       }
