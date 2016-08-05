@@ -1,8 +1,8 @@
 React Markdown
 ==================
 
-[![BuildStatus](https://travis-ci.org/javiercf/react-markdown-loader.svg?branch=master)]
-(https://travis-ci.org/javiercf/react-markdown-loader)
+[![npm version](https://img.shields.io/npm/v/react-markdown-loader.svg)](https://www.npmjs.com/package/react-markdown-loader)
+[![build status](https://travis-ci.org/javiercf/react-markdown-loader.svg?branch=master)](https://travis-ci.org/javiercf/react-markdown-loader)
 
 This loader parses markdown files and converts them to a React Stateless Component
 It will also parse FrontMatter in order to render components.
