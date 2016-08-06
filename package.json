@@ -47,7 +47,9 @@
     "statements": 100
   },
   "dependencies": {
-    "markdown-parse": "^0.2.1"
+    "front-matter": "^2.1.0",
+    "highlight.js": "^9.5.0",
+    "marked": "^0.3.6"
   },
   "devDependencies": {
     "chai": "^3.5.0",
