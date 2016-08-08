@@ -1,5 +1,5 @@
 {
-  "extends": [ "fernandopasik", "fernandopasik/es6" ],
+  "extends": [ "fernandopasik", "fernandopasik/es6", "fernandopasik/react" ],
   "env": {
     "node": true
   },
