@@ -7,14 +7,14 @@ imports:
 
 This is an example component
 
-```html
+```react html
 <HelloWorld />
 <Button label="Hello World" />
 ```
 
 You can set who to say Hello
 
-```html
+```react html
 <HelloWorld who="Fernando" />
 <Button label="Hello Fernando" />
 ```

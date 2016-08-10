@@ -54,7 +54,8 @@ describe('Parse Markdown', () => {
   it('parses markdown with live code blocks', () =>
     parser.parse(mdExample).then(result => {
       result.html.should.contain(`<div class="run"><HelloWorld />
-<Button label="Hello World" /></div>`);
+<Button label="Hello World" />
+</div>`);
     })
   );
 

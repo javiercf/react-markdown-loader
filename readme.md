@@ -9,19 +9,19 @@ React Markdown
 This loader parses markdown files and converts them to a React Stateless Component
 It will also parse FrontMatter in order to render components.
 
+We developed this loader in order to make the process of creating styleguides for
+React components easier
+
 ## Usage
-In order to render components define the following fields in the FrontMatter
-spacing in FrontMatter should always be spaces, (tabs produce an error in the compiler)
+
+In the FrontMatter you should import the components you want to render
+with the component name as a key and it's path as the value
 
 ```markdown
 ---
-ComponentName:
-props (optional):
-children (optional):
-  - foo:
-    content: text (When Component children is not a component but text)
-    props (optional):
-    children (optional):
+imports:
+  HelloWorld: './hello-world.js',
+  '{ Component1, Component2 }': './components.js'
 ---
 ```
 
@@ -31,7 +31,7 @@ module: {
   loaders: [
     {
       test: /\.md$/,
-      loader: 'babel!react-markdown-loader'
+      loader: 'babel!markdown-loader'
     }
   ]
 }
@@ -63,27 +63,33 @@ HelloWorld.defaultProps = {
 };
 
 ```
+In the markdown File simply add the react tag to code fenceblocks you want the
+loader to compile as Components this will output the usual highlighted code
+and the rendered component.
 
 *hello-world.md*
 ```markdown
 ---
-componentName: HelloWorld
-dependencies:
-  HelloWorld: ./hello-world.js
-props:
-  who: World!!!
+imports:
+  HelloWorld: './hello-world.js'
 ---
 # Hello World
 
 This is an example component
 
-    ```html
+    ```react html
     <HelloWorld />
     ```
 
 You can send who to say Hello
 
-    ```html
+    ```react html
     <HelloWorld who="World!!!" />
+    ```
+
+    ```scss
+    .hello-world {
+      color: #9CD;
+    }
     ```
 ```

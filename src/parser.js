@@ -3,8 +3,9 @@
 const
   frontMatter = require('front-matter'),
   highlight = require('highlight.js'),
-  marked = require('marked'),
-  renderer = new marked.Renderer();
+  Remarkable = require('remarkable'),
+  escapeHtml = require('remarkable/lib/common/utils').escapeHtml,
+  md = new Remarkable();
 
 /**
  * Wraps the code and jsx in an html component
@@ -35,7 +36,7 @@ function codeBlockTemplate(exampleRun, exampleSrc, langClass) {
  * @returns {String}                Code block with souce and run code
  */
 function parseCodeBlock(code, lang, langPrefix, highlight) {
-  let codeBlock = code;
+  let codeBlock = escapeHtml(code);
 
   if (highlight) {
     codeBlock = highlight(code, lang);
@@ -46,11 +47,7 @@ function parseCodeBlock(code, lang, langPrefix, highlight) {
     jsx = code;
 
   codeBlock = codeBlock
-    .replace(/{/g, '{"{"{')
-    .replace(/}/g, '{"}"}')
-    .replace(/{"{"{/g, '{"{"}')
-    .replace(/class=/g, 'className=')
-    .replace(/(\n)/g, '{"\\n"}');
+    .replace(/class=/g, 'className=');
 
   return codeBlockTemplate(jsx, codeBlock, langClass);
 }
@@ -76,27 +73,34 @@ function parseCodeBlock(code, lang, langPrefix, highlight) {
  */
 function parseMarkdown(markdown) {
   return new Promise((resolve, reject) => {
+    let html;
 
     const options = {
-      renderer,
       highlight(code) {
         return highlight.highlightAuto(code).value;
-      }
+      },
+      xhtml: true
     };
 
-    renderer.code = function (code, lang) {
-      return parseCodeBlock(code, lang,
-        this.options.langPrefix, this.options.highlight);
+    md.set(options);
+
+    md.renderer.rules.fence_custom.react = (tokens, idx, options) => {
+      // gets tags applied to fence blocks ```react html
+      const codeTags = tokens[idx].params.split(/\s+/g);
+      return parseCodeBlock(
+        tokens[idx].content,
+        codeTags[codeTags.length - 1],
+        options.langPrefix,
+        options.highlight
+      );
     };
 
-    marked(markdown.body, options, (err, html) => {
-      // istanbul ignore if
-      if (err) {
-        return reject(err);
-      }
-
+    try {
+      html = md.render(markdown.body);
       resolve({ html, imports: markdown.attributes.imports });
-    });
+    } catch (err) {
+      return reject(err);
+    }
 
   });
 }
