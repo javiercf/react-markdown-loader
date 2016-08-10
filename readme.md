@@ -6,8 +6,9 @@ React Markdown
 [![dependencies Status](https://david-dm.org/javiercf/react-markdown-loader/status.svg)](https://david-dm.org/javiercf/react-markdown-loader)
 [![devDependencies Status](https://david-dm.org/javiercf/react-markdown-loader/dev-status.svg)](https://david-dm.org/javiercf/react-markdown-loader?type=dev)
 
-This loader parses markdown files and converts them to a React Stateless Component
-It will also parse FrontMatter in order to render components.
+This loader parses markdown files and converts them to a React Stateless Component.
+It will also parse FrontMatter to import dependencies and render components
+along with it’s source code.
 
 We developed this loader in order to make the process of creating styleguides for
 React components easier
@@ -63,7 +64,7 @@ HelloWorld.defaultProps = {
 };
 
 ```
-In the markdown File simply add the react tag to code fenceblocks you want the
+In the markdown File simply add the *render* tag to code fenceblocks you want the
 loader to compile as Components this will output the usual highlighted code
 and the rendered component.
 
@@ -77,13 +78,13 @@ imports:
 
 This is an example component
 
-    ```react html
+    ```render html
     <HelloWorld />
     ```
 
 You can send who to say Hello
 
-    ```react html
+    ```render html
     <HelloWorld who="World!!!" />
     ```
 

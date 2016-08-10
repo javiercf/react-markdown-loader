@@ -84,7 +84,7 @@ function parseMarkdown(markdown) {
 
     md.set(options);
 
-    md.renderer.rules.fence_custom.react = (tokens, idx, options) => {
+    md.renderer.rules.fence_custom.render = (tokens, idx, options) => {
       // gets tags applied to fence blocks ```react html
       const codeTags = tokens[idx].params.split(/\s+/g);
       return parseCodeBlock(
