@@ -26,7 +26,7 @@
     "start": "npm run watch",
     "lint": "eslint .",
     "test": "nyc mocha",
-    "pretest": "rm -rf coverage",
+    "pretest": "rm -rf coverage .nyc_output",
     "travis": "npm run -s build",
     "watch": "watch 'npm run -s build' src/ test/"
   },
