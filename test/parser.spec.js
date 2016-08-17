@@ -64,7 +64,7 @@ describe('Parse Markdown', () => {
       exampleCode = '![](myImage.png)';
     parser.parse(exampleCode).then(result => {
       result.html.should.ewual('<p><img src="myImage.png" alt="" /></p>\n');
-    })
+    });
   });
 
 });
