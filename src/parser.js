@@ -79,7 +79,7 @@ function parseMarkdown(markdown) {
       highlight(code) {
         return highlight.highlightAuto(code).value;
       },
-      xhtml: true
+      xhtmlOut: true
     };
 
     md.set(options);

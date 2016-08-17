@@ -59,4 +59,12 @@ describe('Parse Markdown', () => {
     })
   );
 
+  it('parses markdown and created valid html for JSX', () => {
+    const
+      exampleCode = '![](myImage.png)';
+    parser.parse(exampleCode).then(result => {
+      result.html.should.ewual('<p><img src="myImage.png" alt="" /></p>\n');
+    })
+  });
+
 });
