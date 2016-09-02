@@ -47,6 +47,7 @@ function parseCodeBlock(code, lang, langPrefix, highlight) {
     jsx = code;
 
   codeBlock = codeBlock
+    .replace(/(\n)/g, '{"\\n"}')
     .replace(/class=/g, 'className=');
 
   return codeBlockTemplate(jsx, codeBlock, langClass);
