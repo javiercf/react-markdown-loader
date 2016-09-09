@@ -47,6 +47,9 @@ function parseCodeBlock(code, lang, langPrefix, highlight) {
     jsx = code;
 
   codeBlock = codeBlock
+    .replace(/{/g, '{"{"{')
+    .replace(/}/g, '{"}"}')
+    .replace(/{"{"{/g, '{"{"}')
     .replace(/(\n)/g, '{"\\n"}')
     .replace(/class=/g, 'className=');
 
