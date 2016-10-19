@@ -32,7 +32,7 @@ module: {
   loaders: [
     {
       test: /\.md$/,
-      loader: 'babel!markdown-loader'
+      loader: 'babel!react-markdown'
     }
   ]
 }
@@ -77,6 +77,7 @@ imports:
 # Hello World
 
 This is an example component
+You should remove the space before lines of code block
 
     ```render html
     <HelloWorld />
