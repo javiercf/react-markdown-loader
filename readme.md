@@ -81,13 +81,13 @@ imports:
 This is an example component
 
 ```render html
-<HelloWorld />
+&lt;HelloWorld /&gt;
 ```
 
 You can send who to say Hello
 
 ```render html
-<HelloWorld who="World!!!" />
+&lt;HelloWorld who="World!!!" /&gt;
 ```
 
 ```scss
