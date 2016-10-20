@@ -71,7 +71,7 @@ and the rendered component.
 *hello-world.md*
 
 <pre>
-...
+
 ---
 imports:
   HelloWorld: './hello-world.js'
@@ -90,10 +90,4 @@ You can send who to say Hello
 &lt;HelloWorld who="World!!!" /&gt;
 ```
 
-```scss
-.hello-world {
-  color: #9CD;
-}
-```
-...
 </pre>
