@@ -69,7 +69,9 @@ loader to compile as Components this will output the usual highlighted code
 and the rendered component.
 
 *hello-world.md*
-```markdown
+
+<pre>
+...
 ---
 imports:
   HelloWorld: './hello-world.js'
@@ -77,21 +79,21 @@ imports:
 # Hello World
 
 This is an example component
-You should remove the space before lines of code block
 
-    ```render html
-    <HelloWorld />
-    ```
+```render html
+<HelloWorld />
+```
 
 You can send who to say Hello
 
-    ```render html
-    <HelloWorld who="World!!!" />
-    ```
-
-    ```scss
-    .hello-world {
-      color: #9CD;
-    }
-    ```
+```render html
+<HelloWorld who="World!!!" />
 ```
+
+```scss
+.hello-world {
+  color: #9CD;
+}
+```
+...
+</pre>
