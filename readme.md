@@ -32,7 +32,7 @@ module: {
   loaders: [
     {
       test: /\.md$/,
-      loader: 'babel!markdown-loader'
+      loader: 'babel!react-markdown'
     }
   ]
 }
