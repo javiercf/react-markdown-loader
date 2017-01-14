@@ -1,4 +1,6 @@
 'use strict';
+const camelize = require('camelize');
+const except = require('except');
 
 /**
  * @typedef HTMLObject
@@ -20,6 +22,8 @@ module.exports = function build(markdown) {
     imports = markdown.imports || {},
     jsx = markdown.html.replace(/class=/g, 'className=');
 
+  const frontMatterAttributes = except(markdown.attributes, 'imports');
+
   for (const variable in imports) {
     // eslint-disable-next-line no-prototype-builtins
     if (imports.hasOwnProperty(variable)) {
@@ -30,7 +34,8 @@ module.exports = function build(markdown) {
   return `
 ${doImports}
 
-module.exports = function() {
+export const attributes = ${JSON.stringify(camelize(frontMatterAttributes))};
+export default function() {
   return (
     <div>
       ${jsx}
