@@ -103,7 +103,7 @@ function parseMarkdown(markdown) {
 
     try {
       html = md.render(markdown.body);
-      resolve({ html, attributes: markdown.attributes, imports: markdown.attributes.imports });
+      resolve({ html, attributes: markdown.attributes });
     } catch (err) {
       return reject(err);
     }
