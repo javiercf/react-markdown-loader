@@ -51,7 +51,7 @@ describe('Parse Markdown', () => {
 </div>`);
   });
 
-  it('parses markdown with live code blocks', (done) => {
+  it('parses markdown with live code blocks', done => {
     parser.parse(mdExample).then(result => {
       result.html.should.contain(`<div class="run"><HelloWorld />
 <Button label="Hello World" />
@@ -61,7 +61,7 @@ describe('Parse Markdown', () => {
     .catch(done);
   });
 
-  it('parses markdown and created valid html for JSX', (done) => {
+  it('parses markdown and created valid html for JSX', done => {
     const
       exampleCode = '![](myImage.png)';
     parser.parse(exampleCode).then(result => {
@@ -71,7 +71,7 @@ describe('Parse Markdown', () => {
     .catch(done);
   });
 
-  it('provides the front-matter attributes', (done) => {
+  it('provides the front-matter attributes', done => {
     parser.parse(mdExample).then(result => {
       result.attributes['test-front-matter'].should.equal('hello world');
     })
