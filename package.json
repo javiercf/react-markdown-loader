@@ -55,11 +55,11 @@
     "chai": "^3.5.0",
     "dirty-chai": "^1.2.2",
     "eslint": "^3.2.2",
-    "eslint-config-fernandopasik": "^0.4.4",
+    "eslint-config-fernandopasik": "latest",
     "eslint-plugin-react": "^6.0.0",
     "mocha": "^3.0.1",
-    "nyc": "^7.1.0",
-    "watch": "^0.19.1"
+    "nyc": "10.0.0",
+    "watch": "^1.0.0"
   },
   "engines": {
     "node": ">=4.0.0",
