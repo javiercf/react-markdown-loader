@@ -2,12 +2,10 @@
 
 const
   frontMatter = require('front-matter'),
-  Prism = require('prismjs'),
+  Prism = require('node-prismjs'),
   Remarkable = require('remarkable'),
   escapeHtml = require('remarkable/lib/common/utils').escapeHtml,
   md = new Remarkable();
-
-require('prismjs/components/prism-jsx');
 
 /**
  * Wraps the code and jsx in an html component
@@ -83,7 +81,8 @@ function parseMarkdown(markdown) {
 
     const options = {
       highlight(code, lang) {
-        return Prism.highlight(code, Prism.languages[lang]);
+        const language = Prism.languages[lang] || Prism.languages.autoit;
+        return Prism.highlight(code, language);
       },
       xhtmlOut: true
     };
