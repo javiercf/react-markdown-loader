@@ -56,6 +56,8 @@
     "dirty-chai": "^1.2.2",
     "eslint": "^3.2.2",
     "eslint-config-fernandopasik": "latest",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-mocha": "^4.7.0",
     "eslint-plugin-react": "^6.0.0",
     "mocha": "^3.0.1",
     "nyc": "10.0.0",
