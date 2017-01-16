@@ -1,6 +1,6 @@
 {
   "name": "react-markdown-loader",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Webpack loader to render React Components from markdown",
   "keywords": [
     "react",
@@ -55,7 +55,7 @@
     "chai": "^3.5.0",
     "dirty-chai": "^1.2.2",
     "eslint": "^3.2.2",
-    "eslint-config-fernandopasik": "latest",
+    "eslint-config-fernandopasik": "^0.5.1",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-mocha": "^4.7.0",
     "eslint-plugin-react": "^6.0.0",
