@@ -1,5 +1,4 @@
 ---
-test-front-matter: 'hello world'
 imports:
   Button: './button.js'
   HelloWorld: './hello-world.js'

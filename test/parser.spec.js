@@ -51,32 +51,20 @@ describe('Parse Markdown', () => {
 </div>`);
   });
 
-  it('parses markdown with live code blocks', done => {
+  it('parses markdown with live code blocks', () =>
     parser.parse(mdExample).then(result => {
       result.html.should.contain(`<div class="run"><HelloWorld />
 <Button label="Hello World" />
 </div>`);
     })
-    .then(done)
-    .catch(done);
-  });
+  );
 
-  it('parses markdown and created valid html for JSX', done => {
+  it('parses markdown and created valid html for JSX', () => {
     const
       exampleCode = '![](myImage.png)';
     parser.parse(exampleCode).then(result => {
-      result.html.should.equal('<p><img src="myImage.png" alt="" /></p>\n');
-    })
-    .then(done)
-    .catch(done);
-  });
-
-  it('provides the front-matter attributes', done => {
-    parser.parse(mdExample).then(result => {
-      result.attributes['test-front-matter'].should.equal('hello world');
-    })
-    .then(done)
-    .catch(done);
+      result.html.should.ewual('<p><img src="myImage.png" alt="" /></p>\n');
+    });
   });
 
 });
