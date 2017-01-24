@@ -36,8 +36,4 @@ describe('Build Component', () => {
     component.should.contain('import HelloWorld from \'./hello-world.js\';\n');
   });
 
-  it('exports the front-matter attributes', () => {
-    component.should.contain('export const attributes = {"testFrontMatter":"hello world"}');
-  });
-
 });
