@@ -10,7 +10,7 @@ describe('Parse Markdown', () => {
   let mdExample = '';
   const mdFile = path.join(__dirname, './examples/hello-world.md');
 
-  before(done => {
+  beforeAll(done => {
     fs.readFile(mdFile, 'utf8', (err, data) => {
       if (err) {
         return done(err);
@@ -23,16 +23,15 @@ describe('Parse Markdown', () => {
 
   it('extracts front matter from markdown', () => {
     const result = parser.parseFrontMatter(mdExample);
-    result.should.have.property('attributes');
-    result.should.have.property('body');
+    expect(result).toHaveProperty('attributes');
+    expect(result).toHaveProperty('body');
   });
 
   it('front matter attributes should contain imports object', () => {
     const result = parser.parseFrontMatter(mdExample);
-    result.attributes.should.have.property('imports');
-    result.attributes.imports.should.be.a('object');
-    result.attributes.imports.should
-      .deep.equal({ Button: './button.js', HelloWorld: './hello-world.js' });
+    expect(result.attributes).toHaveProperty('imports');
+    expect(result.attributes.imports).toBeInstanceOf(Object);
+    expect(result.attributes.imports).toEqual({ Button: './button.js', HelloWorld: './hello-world.js' });
   });
 
   it('example code blocks have run and source code', () => {
@@ -40,7 +39,7 @@ describe('Parse Markdown', () => {
       exampleCode = 'example',
       result = parser.codeBlockTemplate(exampleCode, exampleCode);
 
-    result.should.equal(`
+    expect(result).toEqual(`
 <div class="example">
   <div class="run">example</div>
   <div class="source">
@@ -51,32 +50,22 @@ describe('Parse Markdown', () => {
 </div>`);
   });
 
-  it('parses markdown with live code blocks', done => {
+  it('parses markdown with live code blocks', () =>
     parser.parse(mdExample).then(result => {
-      result.html.should.contain(`<div class="run"><HelloWorld />
-<Button label="Hello World" />
-</div>`);
+      expect(result.html).toMatch(/<div class="run"><HelloWorld \/>\s*<Button label="Hello World" \/>\s*<\/div>/);
     })
-    .then(done)
-    .catch(done);
-  });
+  );
 
-  it('parses markdown and created valid html for JSX', done => {
-    const
-      exampleCode = '![](myImage.png)';
-    parser.parse(exampleCode).then(result => {
-      result.html.should.equal('<p><img src="myImage.png" alt="" /></p>\n');
+  it('parses markdown and created valid html for JSX', () =>
+    parser.parse('![](myImage.png)').then(result => {
+      expect(result.html).toMatch(/<p><img src="myImage.png" alt="" \/><\/p>\n/);
     })
-    .then(done)
-    .catch(done);
-  });
+  );
 
-  it('provides the front-matter attributes', done => {
+  it('provides the front-matter attributes', () =>
     parser.parse(mdExample).then(result => {
-      result.attributes['test-front-matter'].should.equal('hello world');
+      expect(result.attributes).toHaveProperty('test-front-matter', 'hello world');
     })
-    .then(done)
-    .catch(done);
-  });
+  );
 
 });

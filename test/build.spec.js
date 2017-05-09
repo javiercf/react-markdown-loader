@@ -11,7 +11,7 @@ describe('Build Component', () => {
   let component = '';
   const mdFile = path.join(__dirname, './examples/hello-world.md');
 
-  before(done => {
+  beforeAll(done => {
     fs.readFile(mdFile, 'utf8', (err, data) => {
       if (err) {
         return done(err);
@@ -28,16 +28,16 @@ describe('Build Component', () => {
   });
 
   it('add React import', () => {
-    component.should.contain('import React from \'react\';\n');
+    expect(component).toMatch(/import React from 'react';\n/);
   });
 
   it('add component imports', () => {
-    component.should.contain('import Button from \'./button.js\';\n');
-    component.should.contain('import HelloWorld from \'./hello-world.js\';\n');
+    expect(component).toMatch(/import Button from '.\/button.js';\n/);
+    expect(component).toMatch(/import HelloWorld from '.\/hello-world.js';\n/);
   });
 
   it('exports the front-matter attributes', () => {
-    component.should.contain('export const attributes = {"testFrontMatter":"hello world"}');
+    expect(component).toMatch(/export const attributes = {"testFrontMatter":"hello world"}/);
   });
 
 });

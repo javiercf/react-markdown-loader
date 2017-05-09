@@ -10,7 +10,7 @@ describe('React Markdown Loader', () => {
   let mdExample = '';
   const mdFile = path.join(__dirname, './examples/hello-world.md');
 
-  before(done => {
+  beforeAll(done => {
     fs.readFile(mdFile, 'utf8', (err, data) => {
       if (err) {
         return done(err);
@@ -25,7 +25,7 @@ describe('React Markdown Loader', () => {
     // eslint-disable-next-line prefer-reflect
     loader.call({
       async: err => {
-        expect(err).to.not.exist();
+        expect(err).not.toBeDefined();
         done();
       }
     }, mdExample);
