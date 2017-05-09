@@ -10,8 +10,8 @@ This loader parses markdown files and converts them to a React Stateless Compone
 It will also parse FrontMatter to import dependencies and render components
 along with it’s source code.
 
-We developed this loader in order to make the process of creating styleguides for
-React components easier
+We developed this loader to make the process of creating styleguides for
+React components easier.
 
 ## Usage
 
@@ -64,7 +64,7 @@ HelloWorld.defaultProps = {
 };
 
 ```
-In the markdown File simply add the *render* tag to code fenceblocks you want the
+In the markdown File add the *render* tag to code fenceblocks you want the
 loader to compile as Components this will output the usual highlighted code
 and the rendered component.
 
