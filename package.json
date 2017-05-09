@@ -30,22 +30,6 @@
     "travis": "npm run -s build",
     "watch": "watch 'npm run -s build' src/ test/"
   },
-  "nyc": {
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "all": true,
-    "exclude": [
-      "test/",
-      "coverage/"
-    ],
-    "check-coverage": false,
-    "lines": 100,
-    "functions": 100,
-    "branches": 100,
-    "statements": 100
-  },
   "dependencies": {
     "camelize": "^1.0.0",
     "except": "^0.1.3",

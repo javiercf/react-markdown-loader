@@ -1,0 +1,16 @@
+{
+  "reporter": [
+    "lcov",
+    "text"
+  ],
+  "all": true,
+  "exclude": [
+    "test/",
+    "coverage/"
+  ],
+  "check-coverage": false,
+  "lines": 100,
+  "functions": 100,
+  "branches": 100,
+  "statements": 100
+}
