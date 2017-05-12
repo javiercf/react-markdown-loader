@@ -92,11 +92,15 @@ You can send who to say Hello
 
 </pre>
 
+## Contributing
+
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](../../issues/new).
+
 ## Team
 
 [![Javier Cubides](https://avatars.githubusercontent.com/u/3386811?s=130)](https://github.com/javiercf) | [![Fernando Pasik](https://avatars.githubusercontent.com/u/1301335?s=130)](https://fernandopasik.com)
 ---|---
-[Javier Cubides](https://github.com/javiercf) | [Fernando Pasik](https://fernandopasik.com) 
+[Javier Cubides](https://github.com/javiercf) | [Fernando Pasik](https://fernandopasik.com)
 
 ## License
 
