@@ -6,7 +6,7 @@ React Markdown
 [![dependencies Status](https://david-dm.org/javiercf/react-markdown-loader/status.svg)](https://david-dm.org/javiercf/react-markdown-loader)
 [![devDependencies Status](https://david-dm.org/javiercf/react-markdown-loader/dev-status.svg)](https://david-dm.org/javiercf/react-markdown-loader?type=dev)
 
-This loader parses markdown files and converts them to a React Stateless Component.
+Webpack loader that parses markdown files and converts them to a React Stateless Component.
 It will also parse FrontMatter to import dependencies and render components
 along with it’s source code.
 
