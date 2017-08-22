@@ -20,7 +20,7 @@ function codeBlockTemplate(exampleRun, exampleSrc, langClass) {
 <div class="example">
   <div class="run">${exampleRun}</div>
   <div class="source">
-    <pre><code${!langClass ? '' : ` class="${langClass}"`}>
+    <pre${!langClass ? '' : ` class="${langClass}"`}><code${!langClass ? '' : ` class="${langClass}"`}>
       ${exampleSrc}
     </code></pre>
   </div>
