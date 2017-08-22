@@ -1,9 +1,15 @@
 {
-  "extends": [ "fernandopasik", "fernandopasik/es6", "fernandopasik/react" ],
+  "extends": [ "airbnb" ],
   "env": {
     "node": true
   },
   "parserOptions": {
     "sourceType": "script"
+  },
+  "rules": {
+    "strict": [ "error", "global" ],
+    "consistent-return": "off",
+    "jsx-a11y/href-no-hash": "off",
+    "react/jsx-filename-extension": "off",
   }
 }

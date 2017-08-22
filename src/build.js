@@ -1,4 +1,5 @@
 'use strict';
+
 const camelize = require('camelize');
 const except = require('except');
 
@@ -16,14 +17,13 @@ const except = require('except');
  * @returns {String}              - React Component
  */
 module.exports = function build(markdown) {
-
   let doImports = 'import React from \'react\';\n';
-  const
-    imports = markdown.attributes.imports || {},
-    jsx = markdown.html.replace(/class=/g, 'className=');
+  const imports = markdown.attributes.imports || {};
+  const jsx = markdown.html.replace(/class=/g, 'className=');
 
   const frontMatterAttributes = except(markdown.attributes, 'imports');
 
+  // eslint-disable-next-line no-restricted-syntax
   for (const variable in imports) {
     // eslint-disable-next-line no-prototype-builtins
     if (imports.hasOwnProperty(variable)) {

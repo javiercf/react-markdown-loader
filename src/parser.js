@@ -1,11 +1,11 @@
 'use strict';
 
-const
-  frontMatter = require('front-matter'),
-  Prism = require('node-prismjs'),
-  Remarkable = require('remarkable'),
-  escapeHtml = require('remarkable/lib/common/utils').escapeHtml,
-  md = new Remarkable();
+const frontMatter = require('front-matter');
+const Prism = require('node-prismjs');
+const Remarkable = require('remarkable');
+const escapeHtml = require('remarkable/lib/common/utils').escapeHtml;
+
+const md = new Remarkable();
 
 /**
  * Wraps the code and jsx in an html component
@@ -42,9 +42,8 @@ function parseCodeBlock(code, lang, langPrefix, highlight) {
     codeBlock = highlight(code, lang);
   }
 
-  const
-    langClass = !lang ? '' : `${langPrefix}${escape(lang, true)}`,
-    jsx = code;
+  const langClass = !lang ? '' : `${langPrefix}${escape(lang, true)}`;
+  const jsx = code;
 
   codeBlock = codeBlock
     .replace(/{/g, '{"{"{')
@@ -84,29 +83,28 @@ function parseMarkdown(markdown) {
         const language = Prism.languages[lang] || Prism.languages.autoit;
         return Prism.highlight(code, language);
       },
-      xhtmlOut: true
+      xhtmlOut: true,
     };
 
     md.set(options);
 
-    md.renderer.rules.fence_custom.render = (tokens, idx, options) => {
+    md.renderer.rules.fence_custom.render = (tokens, idx, opts) => {
       // gets tags applied to fence blocks ```react html
       const codeTags = tokens[idx].params.split(/\s+/g);
       return parseCodeBlock(
         tokens[idx].content,
         codeTags[codeTags.length - 1],
-        options.langPrefix,
-        options.highlight
+        opts.langPrefix,
+        opts.highlight,
       );
     };
 
     try {
       html = md.render(markdown.body);
-      resolve({ html, attributes: markdown.attributes });
+      return resolve({ html, attributes: markdown.attributes });
     } catch (err) {
       return reject(err);
     }
-
   });
 }
 
@@ -136,5 +134,5 @@ module.exports = {
   parse,
   parseCodeBlock,
   parseFrontMatter,
-  parseMarkdown
+  parseMarkdown,
 };
