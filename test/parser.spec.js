@@ -1,16 +1,14 @@
 'use strict';
 
-const
-  fs = require('fs'),
-  path = require('path'),
-  parser = require('../src/parser.js');
+const fs = require('fs');
+const path = require('path');
+const parser = require('../src/parser.js');
 
 describe('Parse Markdown', () => {
-
   let mdExample = '';
   const mdFile = path.join(__dirname, './examples/hello-world.md');
 
-  beforeAll(done => {
+  beforeAll((done) => {
     fs.readFile(mdFile, 'utf8', (err, data) => {
       if (err) {
         return done(err);
@@ -35,9 +33,8 @@ describe('Parse Markdown', () => {
   });
 
   it('example code blocks have run and source code', () => {
-    const
-      exampleCode = 'example',
-      result = parser.codeBlockTemplate(exampleCode, exampleCode);
+    const exampleCode = 'example';
+    const result = parser.codeBlockTemplate(exampleCode, exampleCode);
 
     expect(result).toEqual(`
 <div class="example">
@@ -51,21 +48,20 @@ describe('Parse Markdown', () => {
   });
 
   it('parses markdown with live code blocks', () =>
-    parser.parse(mdExample).then(result => {
+    parser.parse(mdExample).then((result) => {
       expect(result.html).toMatch(/<div class="run"><HelloWorld \/>\s*<Button label="Hello World" \/>\s*<\/div>/);
-    })
+    }),
   );
 
   it('parses markdown and created valid html for JSX', () =>
-    parser.parse('![](myImage.png)').then(result => {
+    parser.parse('![](myImage.png)').then((result) => {
       expect(result.html).toMatch(/<p><img src="myImage.png" alt="" \/><\/p>\n/);
-    })
+    }),
   );
 
   it('provides the front-matter attributes', () =>
-    parser.parse(mdExample).then(result => {
+    parser.parse(mdExample).then((result) => {
       expect(result.attributes).toHaveProperty('test-front-matter', 'hello world');
-    })
+    }),
   );
-
 });
