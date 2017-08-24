@@ -33,13 +33,24 @@ module.exports = function build(markdown) {
 
   return `
 ${doImports}
+export default class extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = Object.assign({}, this.props, ${JSON.stringify(camelize(frontMatterAttributes))})
+  }
 
-export const attributes = ${JSON.stringify(camelize(frontMatterAttributes))};
-export default function() {
-  return (
-    <div>
-      ${jsx}
-    </div>
-  );
-};`;
+  componentWillReceiveProps(nextProps) {
+    this.setState(nextProps)
+  }
+
+  render () {
+    const state = this.state
+    const setState = this.setState.bind(this)
+    return (
+      <div>
+        ${jsx}
+      </div>
+    )
+  }
+}`;
 };
