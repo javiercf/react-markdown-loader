@@ -83,7 +83,7 @@ function parseMarkdown(markdown) {
         const language = Prism.languages[lang] || Prism.languages.autoit;
         return Prism.highlight(code, language);
       },
-      xhtmlOut: true,
+      xhtmlOut: true
     };
 
     md.set(options);
@@ -95,7 +95,7 @@ function parseMarkdown(markdown) {
         tokens[idx].content,
         codeTags[codeTags.length - 1],
         opts.langPrefix,
-        opts.highlight,
+        opts.highlight
       );
     };
 
@@ -134,5 +134,5 @@ module.exports = {
   parse,
   parseCodeBlock,
   parseFrontMatter,
-  parseMarkdown,
+  parseMarkdown
 };
