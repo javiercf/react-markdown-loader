@@ -1,6 +1,6 @@
 {
   "name": "react-markdown-loader",
-  "version": "1.1.13",
+  "version": "1.1.14",
   "description": "Webpack loader to render React Components from markdown",
   "keywords": [
     "react",
