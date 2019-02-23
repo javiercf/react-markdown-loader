@@ -22,13 +22,10 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "build": "npm run -s lint && npm test",
-    "start": "npm run watch",
+    "start": "watch 'yarn preversion' src/ test/",
     "lint": "eslint .",
-    "test": "jest --coverage",
-    "pretest": "rm -rf coverage",
-    "travis": "npm run -s build",
-    "watch": "watch 'npm run -s build' src/ test/"
+    "test": "jest",
+    "preversion": "yarn lint && yarn test"
   },
   "dependencies": {
     "camelize": "^1.0.0",
