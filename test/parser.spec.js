@@ -47,21 +47,21 @@ describe('Parse Markdown', () => {
 </div>`);
   });
 
-  it('parses markdown with live code blocks', () =>
+  it('parses markdown with live code blocks', () => (
     parser.parse(mdExample).then((result) => {
       expect(result.html).toMatch(/<div class="run"><HelloWorld \/>\s*<Button label="Hello World" \/>\s*<\/div>/);
-    }),
-  );
+    })
+  ));
 
-  it('parses markdown and created valid html for JSX', () =>
+  it('parses markdown and created valid html for JSX', () => (
     parser.parse('![](myImage.png)').then((result) => {
       expect(result.html).toMatch(/<p><img src="myImage.png" alt="" \/><\/p>\n/);
-    }),
-  );
+    })
+  ));
 
-  it('provides the front-matter attributes', () =>
+  it('provides the front-matter attributes', () => (
     parser.parse(mdExample).then((result) => {
       expect(result.attributes).toHaveProperty('test-front-matter', 'hello world');
-    }),
-  );
+    })
+  ));
 });

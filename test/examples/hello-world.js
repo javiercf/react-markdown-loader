@@ -7,8 +7,13 @@ import PropTypes from 'prop-types';
  * @param {Object} props React props
  * @returns {JSX} template
  */
-export default function HelloWorld(props) {
-  return <div className="hello-world">Hello { props.who }</div>;
+export default function HelloWorld({ who }) {
+  return (
+    <div className="hello-world">
+      Hello
+      {who}
+    </div>
+  );
 }
 
 HelloWorld.propTypes = { who: PropTypes.string };

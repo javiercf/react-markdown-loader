@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
  * @param {Object} props React props
  * @returns {JSX} template
  */
-export default function Button(props) {
-  return <button className="button">{ props.label }</button>;
+export default function Button({ label }) {
+  return <button className="button" type="button">{label}</button>;
 }
 
 Button.propTypes = { label: PropTypes.string };

@@ -16,4 +16,3 @@ module.exports = function loader(content) {
     .then(component => callback(null, component))
     .catch(callback);
 };
-
