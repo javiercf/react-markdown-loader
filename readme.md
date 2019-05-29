@@ -1,10 +1,28 @@
 React Markdown
 ==================
 
-[![npm version](https://img.shields.io/npm/v/react-markdown-loader.svg)](https://www.npmjs.com/package/react-markdown-loader)
-[![build status](https://travis-ci.org/javiercf/react-markdown-loader.svg?branch=master)](https://travis-ci.org/javiercf/react-markdown-loader)
-[![dependencies Status](https://david-dm.org/javiercf/react-markdown-loader/status.svg)](https://david-dm.org/javiercf/react-markdown-loader)
-[![devDependencies Status](https://david-dm.org/javiercf/react-markdown-loader/dev-status.svg)](https://david-dm.org/javiercf/react-markdown-loader?type=dev)
+[![Build Status][badge-ci]][url-ci]
+[![Known Vulnerabilities][badge-sec]][url-sec]
+
+[![npm version][badge-version]][url-version]
+[![npm downloads][badge-downloads]][url-downloads]
+[![Dependency Status][badge-deps]][url-deps]
+[![peerDependency Status][badge-deps-peer]][url-deps-peer]
+[![devDependency Status][badge-deps-dev]][url-deps-dev]
+
+[badge-ci]: https://travis-ci.org/javiercf/react-markdown-loader.svg?branch=master
+[badge-sec]: https://snyk.io/test/github/javiercf/react-markdown-loader/badge.svg?targetFile=package.json
+[badge-version]: https://img.shields.io/npm/v/react-markdown-loader.svg
+[badge-downloads]: https://img.shields.io/npm/dm/react-markdown-loader.svg
+[badge-deps]: https://david-dm.org/javiercf/react-markdown-loader/status.svg
+[badge-deps-dev]: https://david-dm.org/javiercf/react-markdown-loader/dev-status.svg
+
+[url-ci]: https://travis-ci.org/javiercf/react-markdown-loader "Build Status"
+[url-sec]: https://snyk.io/test/github/javiercf/react-markdown-loader?targetFile=package.json "Known Vulnerabilities"
+[url-version]: https://www.npmjs.com/package/react-markdown-loader "npm version"
+[url-downloads]: https://www.npmjs.com/package/react-markdown-loader "npm downloads"
+[url-deps]: https://david-dm.org/javiercf/react-markdown-loader "Dependency Status"
+[url-deps-dev]: https://david-dm.org/javiercf/react-markdown-loader?type=dev "Dev Dependency Status"
 
 Webpack loader that parses markdown files and converts them to a React Stateless Component.
 It will also parse FrontMatter to import dependencies and render components
