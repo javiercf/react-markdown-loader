@@ -10,17 +10,14 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 
-# npm and bower installs
+# npm
 node_modules
-bower_components
 npm-debug.log
+yarn-error.log
 
-# sass cache folder
-.sass-cache
+# test files
+coverage
 
 # build and temp folders
 dist
 .tmp
-
-# project files
-coverage
