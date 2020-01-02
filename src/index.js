@@ -13,6 +13,6 @@ module.exports = function loader(content) {
   parser
     .parse(content)
     .then(build)
-    .then(component => callback(null, component))
+    .then((component) => callback(null, component))
     .catch(callback);
 };
